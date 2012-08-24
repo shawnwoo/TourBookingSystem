@@ -1,7 +1,10 @@
-package globeTrotters;
+package tour;
 
 
-public class ConcreteTourBuilder extends TourBuilder {
+
+public class VegasTourBuilder extends TourBuilder {
+	
+	private Tour tour;
 
 	@Override
 	public void buildAirline() {
@@ -24,7 +27,17 @@ public class ConcreteTourBuilder extends TourBuilder {
 	@Override
 	public Tour retrieveResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return tour;
 	}
+
+	
+
+	@Override
+	public void buildANewTour() {
+		tour=new Tour("Las Vegas - 5 Days 4 Nights");
+		
+	}
+
+	
 
 }

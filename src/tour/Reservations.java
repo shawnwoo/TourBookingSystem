@@ -1,5 +1,5 @@
-package globeTrotters;
+package tour;
 
 public interface Reservations {
-
+	double getPrice();
 }
