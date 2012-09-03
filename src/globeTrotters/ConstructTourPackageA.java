@@ -8,7 +8,7 @@ public class ConstructTourPackageA {
 	TourBuilder LABuilder = new LATourBuilder();
 	TourBuilder SFBuilder = new SFTourBuilder();
 	TourBuilder VegasBuilder = new VegasTourBuilder();
-	TourPackage tourPackageA=new TourPackage();
+	TourPackage tourPackageA=new TourPackage("Tour Package A");
 
 	public  void construct() {
 		director.setBuilder(LABuilder);

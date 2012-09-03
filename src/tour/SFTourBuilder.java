@@ -1,30 +1,30 @@
 package tour;
 
 public class SFTourBuilder extends TourBuilder {
-	
+
 	private Tour tour;
 
 	@Override
 	public void buildANewTour() {
-		tour=new Tour("San Francisco - 2 Days 1 Night");
+		tour = new Tour("San Francisco - 1/8~14/8");
+		tour.setCap(10);
+		tour.setTemp(74);
 	}
 
-	@Override
 	public void buildAirline() {
 		// TODO Auto-generated method stub
-
+		tour.setAirline(new Airline("UA666", 300.00));
 	}
 
 	@Override
 	public void buildHotel() {
-		// TODO Auto-generated method stub
+		tour.setHotel(new Hotel("Golden Gate", 400.00));
 
 	}
 
 	@Override
 	public void buildTrans() {
-		// TODO Auto-generated method stub
-
+		tour.setTrans(new LocalTransport("BUS", 100.00));
 	}
 
 	@Override

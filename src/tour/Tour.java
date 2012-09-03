@@ -1,16 +1,23 @@
 package tour;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Tour extends AbstractTour {
+import people.Tourist;
+
+public class Tour extends AbstractTour implements Serializable  {
+
+	
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Tour(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
 	
-//	public static void main(String[] args){
-//		Tour a=new Tour("test");
-//		System.out.println(a.getName());
-//	}
-
 }

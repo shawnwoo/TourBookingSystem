@@ -1,5 +1,5 @@
 package tour;
 
 public interface Reservations {
-	double getPrice();
+	public double getPrice();
 }

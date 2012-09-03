@@ -1,37 +1,60 @@
 package tour;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 
 import people.People;
+import people.Tourist;
 
-public abstract class  AbstractTour {
-	
+public abstract class AbstractTour {
+
 	private Date startDate;
 	private Date endDate;
-	private Airlne airline;
+	private Airline airline;
 	private Hotel hotel;
 	private LocalTransport trans;
 	private String name;
 	private int cap;
-	private ArrayList<People> waitingList;
-	
-	public AbstractTour(String name){
-		this.name=name;
+
+	private Temperature temperature = new Temperature(100);
+	private double discountedPrice;
+	private final int discountPercentage = 10;
+
+	private ArrayList<Tourist> touristList = new ArrayList<Tourist>();
+	private ArrayList<Tourist> waitingList = new ArrayList<Tourist>();
+	private int vacancy;
+
+	public AbstractTour(String name) {
+		this.name = name;
 	}
-	
-	public String getName(){
+
+	public AbstractTour() {
+
+	}
+
+	public String getName() {
 		return this.name;
 	}
-	
-	public void setName(String name){
-		this.name=name;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	public double getPrice(){
-		return 0;
+
+	public double getPrice() {
+		return airline.getPrice() + hotel.getPrice() + trans.getPrice();
 	}
+
+	public double getDiscountedPrice() {
+		return this.getPrice() * (100 - discountPercentage) / 100;
+	}
+
+	public String getDiscountNumber() {
+		return "With group discount " + discountPercentage + "%";
+	}
+
+	// public void setDiscountedPrice(double price){
+	// this.discountedPrice=price;
+	// }
 
 	/**
 	 * @return the startDate
@@ -41,7 +64,8 @@ public abstract class  AbstractTour {
 	}
 
 	/**
-	 * @param startDate the startDate to set
+	 * @param startDate
+	 *            the startDate to set
 	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
@@ -55,7 +79,8 @@ public abstract class  AbstractTour {
 	}
 
 	/**
-	 * @param endDate the endDate to set
+	 * @param endDate
+	 *            the endDate to set
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
@@ -64,14 +89,15 @@ public abstract class  AbstractTour {
 	/**
 	 * @return the airline
 	 */
-	public Airlne getAirline() {
+	public Airline getAirline() {
 		return airline;
 	}
 
 	/**
-	 * @param airline the airline to set
+	 * @param airline
+	 *            the airline to set
 	 */
-	public void setAirline(Airlne airline) {
+	public void setAirline(Airline airline) {
 		this.airline = airline;
 	}
 
@@ -83,7 +109,8 @@ public abstract class  AbstractTour {
 	}
 
 	/**
-	 * @param hotel the hotel to set
+	 * @param hotel
+	 *            the hotel to set
 	 */
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
@@ -97,18 +124,67 @@ public abstract class  AbstractTour {
 	}
 
 	/**
-	 * @param trans the trans to set
+	 * @param trans
+	 *            the trans to set
 	 */
 	public void setTrans(LocalTransport trans) {
 		this.trans = trans;
 	}
-	
-	public void setCap(int cap){
-		this.cap=cap;
+
+	public void setCap(int cap) {
+		this.cap = cap;
+		this.vacancy = cap;
 	}
-	
-	public int getCap(){
-		return this.cap; 
+
+	public int getCap() {
+		return this.cap;
+	}
+
+	public void setTemp(double tempF) {
+		temperature.setTempF(tempF);
+	}
+
+	public String getTempF() {
+		return temperature.getTempF();
+	}
+
+	public String getTempC() {
+		return temperature.getTempC();
+	}
+
+	public void addTourist(Tourist tourist) {
+
+		if (vacancy > 0) {
+			touristList.add(tourist);
+			vacancy--;
+		} else {
+			waitingList.add(tourist);
+		}
+
+	}
+
+	public boolean stillAvailable() {
+		if (vacancy > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public int getVacancy() {
+		return vacancy;
+	}
+
+	public int getWaitingNum() {
+		return waitingList.size();
+	}
+
+	public ArrayList<Tourist> getTouristList() {
+		return touristList;
+
+	}
+
+	public ArrayList<Tourist> getWaitingList() {
+		return waitingList;
 	}
 
 }

@@ -8,7 +8,7 @@ public class Tourist implements People {
 	private double totalPrice;
 	private String email;
 	private String address;
-	private String phoneNumber;
+	private String name;
 	
 	
 	
@@ -22,7 +22,9 @@ public class Tourist implements People {
 		return totalPrice;
 	}
 
-
+	public Tourist(String name){
+		this.name=name;
+	}
 
 
 	/**
@@ -68,8 +70,8 @@ public class Tourist implements People {
 	/**
 	 * @return the phoneNumber
 	 */
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getName() {
+		return name;
 	}
 
 
@@ -78,8 +80,8 @@ public class Tourist implements People {
 	/**
 	 * @param phoneNumber the phoneNumber to set
 	 */
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

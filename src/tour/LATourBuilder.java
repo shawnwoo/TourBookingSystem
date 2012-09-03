@@ -6,26 +6,27 @@ public class LATourBuilder extends TourBuilder {
 
 	@Override
 	public void buildANewTour() {
-		tour=new Tour("LA - 3 Days 2 Nights");
+		tour=new Tour("LA - 1/8~14/8");
+		tour.setCap(5);
+		tour.setTemp(80);
 
 	}
 
 	@Override
 	public void buildAirline() {
 		// TODO Auto-generated method stub
-
+		tour.setAirline(new Airline("UA555",200.00 ));
 	}
 
 	@Override
 	public void buildHotel() {
-		// TODO Auto-generated method stub
+		tour.setHotel(new Hotel("Hilton",400.00));
 
 	}
 
 	@Override
 	public void buildTrans() {
-		// TODO Auto-generated method stub
-
+		tour.setTrans(new LocalTransport("BUS",100.00));
 	}
 
 	@Override
